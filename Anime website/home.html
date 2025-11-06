@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Welcome to Xavier's Anime Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f8b73e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e5a939;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Xavier's Anime Image Gallery</h1>
+        <p>Please enter your name to gain access:</p>
+        <input type="text" id="name-input" placeholder="Enter your name">
+        <button onclick="enterGallery()">Enter</button>
+    </div>
+
+    <script>
+        function enterGallery() {
+            var name = document.getElementById('name-input').value;
+            if (name.trim() !== '') {
+                // Store the name in localStorage so we can use it on the gallery page
+                localStorage.setItem('visitorName', name);
+                // Redirect to the gallery page
+                window.location.href = 'Anime.html';
+            } else {
+                alert('Please enter your name to continue.');
+            }
+        }
+    </script>
+</body>
+</html>
