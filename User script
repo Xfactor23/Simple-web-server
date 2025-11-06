@@ -1,19 +1,46 @@
-sudo yum update -y
-sudo yum install httpd -y
-sudo systemctl start httpd 
-sudo systemctl enable httpd 
-sudo chmod 777 /var/www/html
-sudo vi /var/www/html/index.html
+#!/bin/bash
 
-#while in vim enter the following(change it to your liking)
+# Update system packages
+apt update -y
+
+# Install Apache
+apt install apache2 -y
+
+# Start and enable Apache
+systemctl start apache2
+systemctl enable apache2
+
+# Set proper permissions (755 instead of 777 for security)
+chown -R www-data:www-data /var/www/html
+chmod 755 /var/www/html
+
+# Create index.html
+cat > /var/www/html/index.html << 'EOF'
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Apache Web Server</title>
-  </head>
-  <body>
+</head>
+<body>
     <h1>Apache Web Server</h1>
     <p>This is Thanos's HTML web page.</p>
-  </body>
+</body>
 </html>
-#test your website to ensure that it works
+EOF
+
+# Set file permissions
+chmod 644 /var/www/html/index.html
+chown www-data:www-data /var/www/html/index.html
+
+echo "Apache installation complete!"
+echo "Access your website at: http://$(hostname -I | awk '{print $1}')"
+
+
+***** # Create the script
+sudo nano setup-apache.sh
+
+# Make it executable
+sudo chmod +x setup-apache.sh
+
+# Run it
+sudo ./setup-apache.sh
