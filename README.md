@@ -1,13 +1,20 @@
-# Simple-web-server
-This is a simple script for installing and making simple changes to a web server for an AWS EC2 instance
-Once the EC2 instance is created ensure you follow the steps listed below.
+Apache Web Server Setup Script--
 
+A simple bash script to automatically install and configure Apache web server on Ubuntu/Debian systems.
 
-***** # Create the script
-sudo nano setup-apache.sh
+Features:
 
-# Make it executable
-sudo chmod +x setup-apache.sh
+Automatically updates system packages
+Installs Apache2 web server
+Configures Apache to start on boot
+Sets proper file permissions for security
+Creates a basic HTML welcome page
+Displays server IP address for easy access
 
-# Run it
-sudo ./setup-apache.sh
+Prerequisites:
+
+Ubuntu or Debian-based Linux distribution
+
+Root or sudo access
+
+Internet connection
